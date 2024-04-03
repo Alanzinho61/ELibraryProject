@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Book>
+﻿@model IEnumerable<Category>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -8,7 +8,7 @@
 
 <table class="table table-sm">
 
-    <a href="/Admin/Book/Add" class="btn btn-success">Yeni Kitap Ekle</a>
+    <a href="/Admin/Category/Add" class="btn btn-success">Yeni Kategori Ekle</a>
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -24,10 +24,9 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.BookName</td>
-                <td>@item.BookStock</td>
-                <td><a href="/Admin/Book/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
-                <td><a href="/Admin/Book/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+                <td>@item.CategoryName</td>
+                <td><a href="/Admin/Category/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Admin/Category/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
             </tr>
         }
     </tbody>

@@ -1,0 +1,19 @@
+﻿@model Author
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update</h1>
+
+<form asp-action="Update" asp-controller="Author" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+
+    <input type="text" name="AuthorName" value="@Model.AuthorName" placeholder="Kategori Adi" /> <br /> <br />
+    <input type="text" name="AuthorSutname" value="@Model.AuthorSutname" placeholder="Kategori Aciklamasi" /> <br /> <br />
+    <input type="text" name="DateOfBirth" value="@Model.DateOfBirth" placeholder="Kategori Adi" /> <br /> <br />
+
+    <input type="submit" value="Update" class="btn btn-success" />
+
+</form>

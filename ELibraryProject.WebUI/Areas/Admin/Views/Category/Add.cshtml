@@ -1,0 +1,15 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Add</h1>
+
+<form action="/Admin/Category/Add" method="post">
+
+    <input type="text" name="CategoryName" placeholder="Kategori Adi" /> <br /> <br />
+
+    <input type="submit" value="Add" class="btn btn-success" />
+
+</form>

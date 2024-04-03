@@ -1,0 +1,34 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Add</h1>
+
+<form action="/Admin/Book/Add" method="post">
+
+    <input type="text" name="BookName" placeholder="Kategori Adi" /> <br />
+    <input type="text" name="Page" placeholder="Kategori Aciklamasi" /> <br />
+    <input type="text" name="BookStock" placeholder="Kategori Aciklamasi" /> <br />
+    <select class="form-select" aria-label="Default select example" name="CategoryId">
+        <option selected>Open this select menu</option>
+
+        @foreach (var item in ViewBag.Category)
+        {
+            <option value="@item.Id">@item.CategoryName</option>
+        }
+    </select>
+    <select class="form-select" aria-label="Default select example" name="AuthorId">
+        <option selected>Open this select menu</option>
+
+        @foreach (var item in ViewBag.Author)
+        {
+            <option value="@item.Id">@item.AuthorName</option>
+        }
+    </select>
+
+
+    <input type="submit" value="Add" class="btn btn-success" />
+
+</form>

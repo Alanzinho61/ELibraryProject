@@ -1,0 +1,36 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update</h1>
+
+<form asp-action="Update" asp-controller="Book" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+
+    <input type="text" name="BookName" value="@Model.BookName" placeholder="Kategori Adi" /> <br /> <br />
+    <input type="text" name="BookStock" value="@Model.BookStock" placeholder="Kategori Aciklamasi" /> <br /> <br />
+    <input type="text" name="Page" value="@Model.Page" placeholder="Kategori Adi" /> <br /> <br />
+    <select class="form-select" aria-label="Default select example" name="CategoryId">
+        <option selected>Open this select menu</option>
+
+        @* itemid kullanimina bak *@
+
+        @foreach (var item in ViewBag.Category)
+        {
+            if (item.Id == Model.CategoryId)
+            {
+                <option value="@item.Id" selected>@item.CategoryName</option>
+            }
+            else
+            {
+                <option value="@item.Id">@item.CategoryName</option>
+            }
+        }
+    </select>
+
+    <input type="submit" value="Update" class="btn btn-success" />
+
+</form>

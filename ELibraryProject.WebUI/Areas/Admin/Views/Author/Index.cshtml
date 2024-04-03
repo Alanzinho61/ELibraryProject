@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Author>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table table-sm">
+
+    <a href="/Admin/Author/Add" class="btn btn-success">Yeni Kitap Ekle</a>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Yazar Adi</th>
+            <th scope="col">Yazar Soyadi</th>
+            <th scope="col">Dogum Tarihi</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.AuthorName</td>
+                <td>@item.AuthorSutname</td>
+                <td>@item.DateOfBirth</td>
+                <td><a href="/Admin/Author/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Admin/Author/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
