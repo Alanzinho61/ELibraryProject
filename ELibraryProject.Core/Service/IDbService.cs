@@ -1,6 +1,7 @@
 ﻿using ELibraryProject.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,5 +18,6 @@ namespace ELibraryProject.Core.Service
         T Get(int id);
         bool save();
         T find(int id);
-     }
+        IQueryable<T> GetQuery();
+    }
 }

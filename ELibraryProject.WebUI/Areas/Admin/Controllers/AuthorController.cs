@@ -1,12 +1,13 @@
 ﻿using ELibraryProject.Core.Service;
 using ELibraryProject.Model.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using NuGet.Protocol;
 
 namespace ELibraryProject.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class AuthorController : Controller
     {
         private readonly IDbService<Author> _author;

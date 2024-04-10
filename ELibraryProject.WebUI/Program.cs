@@ -2,6 +2,7 @@ using ELibraryProject.Core.Service;
 using ELibraryProject.Model.Context;
 using ELibraryProject.Service.DbService;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ELibraryProject.WebUI
 {
@@ -20,6 +21,16 @@ namespace ELibraryProject.WebUI
 
             //Dependency Injection tanimimiz sayesinde cagirilan araci interface e gore  hedef servisin kurallari uygulanir.
             builder.Services.AddScoped(typeof(IDbService<>), typeof(CoreDbService<>));
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            {
+                x.LoginPath = "/Admin/Login";
+                x.LogoutPath = "/AccessDenied";
+                x.AccessDeniedPath = "/Admin/Logout";
+                x.Cookie.Name = "Admin";
+                x.Cookie.MaxAge = TimeSpan.FromDays(3);
+                x.Cookie.IsEssential=true;
+
+            });
 
             var app = builder.Build();
 
@@ -35,7 +46,7 @@ namespace ELibraryProject.WebUI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             //Admin areasi icin route yapisini olusturduk. 

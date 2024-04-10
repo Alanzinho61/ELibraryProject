@@ -1,8 +1,60 @@
-﻿
+﻿@model IEnumerable<Book>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Kitaplar</h1>
 
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.BookName</h5>
+                        <p class="card-text">
+                            <span class="text-muted">Stock: </span>@item.BookStock <br />
+                            <span class="text-muted">Pages: </span>@item.Page
+                        </p>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Category:</label>
+                            <select class="form-select" aria-label="Default select example" name="CategoryId" disabled style="background-image:none;">
+                                @foreach (var x in ViewBag.Category)
+                                {
+                                    if (x.Id == item.CategoryId)
+                                    {
+                                        <option value="@x.Id" selected style="color: black;">@x.CategoryName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@x.Id">@x.CategoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Author:</label>
+                            <select class="form-select" aria-label="Default select example" name="AuthorId" disabled style="background-image:none;">
+                                @foreach (var x in ViewBag.Author)
+                                {
+                                    if (x.Id == item.AuthorId)
+                                    {
+                                        <option value="@x.Id" selected style="color: black;">@x.AuthorName @x.AuthorSutname</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@x.Id">@x.AuthorName @x.AuthorSutname </option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

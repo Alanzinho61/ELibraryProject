@@ -46,6 +46,8 @@ namespace ELibraryProject.Service.DbService
             
         }
 
+        
+
         public T Get(int id)
         {
             try
@@ -60,7 +62,13 @@ namespace ELibraryProject.Service.DbService
             
         }
 
-        public List<T> GetAll() =>_db.Set<T>().ToList(); 
+        public List<T> GetAll() =>_db.Set<T>().ToList();
+
+        public IQueryable<T> GetQuery()
+        {
+            return _db.Set<T>().AsQueryable();
+        }
+
 
         public bool save()
         {

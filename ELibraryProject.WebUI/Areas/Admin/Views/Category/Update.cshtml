@@ -4,7 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Update</h1>
+<h1>Güncelle</h1>
 
 <form asp-action="Update" asp-controller="Category" method="post" enctype="multipart/form-data">
     <input type="hidden" name="Id" value="@Model.Id" />
@@ -13,6 +13,6 @@
     <input type="text" name="CategoryName" value="@Model.CategoryName" placeholder="Kategori Adi" /> <br /> <br />
 
 
-    <input type="submit" value="Update" class="btn btn-success" />
+    <input type="submit" value="Güncelle" class="btn btn-success" />
 
 </form>

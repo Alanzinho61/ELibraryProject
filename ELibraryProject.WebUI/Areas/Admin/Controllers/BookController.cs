@@ -1,22 +1,24 @@
 ﻿using ELibraryProject.Core.Service;
 using ELibraryProject.Model.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
 namespace ELibraryProject.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class BookController : Controller
     {
         private readonly IDbService<Book> _book;
         private readonly IDbService<Author> _author;
         private readonly IDbService<Category> _category;
-        
-        public BookController(IDbService<Book> book, IDbService<Author> author, IDbService<Category> category)
+        private readonly IDbService<User> _user;
+        public BookController(IDbService<Book> book, IDbService<Author> author, IDbService<Category> category, IDbService<User> user)
         {
             _book = book;
             _author = author;
             _category = category;
+            _user = user;
         }
         public IActionResult Index()
         {

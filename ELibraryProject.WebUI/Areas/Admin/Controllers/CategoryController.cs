@@ -1,10 +1,11 @@
 ﻿using ELibraryProject.Core.Service;
 using ELibraryProject.Model.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ELibraryProject.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class CategoryController : Controller
     {
         private readonly IDbService<Category> _category;
